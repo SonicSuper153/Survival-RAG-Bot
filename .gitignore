@@ -1,0 +1,38 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+.env/
+ollami/
+Lib/
+Scripts/
+
+# Logs and cache
+*.log
+.cache/
+
+# Databases and indexes
+chroma/
+faiss_index/
+index/
+vector_store/
+*.db
+*.sqlite
+
+# Data
+data/
+tools/pdfs/
+
+# Model weights
+*.bin
+*.pt
+*.onnx
+*.ckpt
+
+# OS files
+.DS_Store
+Thumbs.db
