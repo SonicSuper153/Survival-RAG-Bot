@@ -13,7 +13,7 @@ An **offline Retrieval-Augmented Generation (RAG) chatbot** designed for surviva
 * **Document Ingestion** and **Text Chunking** for knowledge base creation
 * **Agent-based Architecture** for modularity and scalability
 * **Python CLI** for querying and structured outputs
-* **No Internet Required** (after initial embedding generation)
+* **No Internet Required** 
 
 ---
 
