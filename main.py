@@ -8,7 +8,7 @@ import os
 hello = Find()
 
 url = r"C:\Users\Ishmeet\OpenAI\tools\texts\A Guide To Outdoor Living And Wilderness Survival.txt"
-query = ""
+query = "Solar Navigation?"
 
 
 # x = hello.structured_output(query)

@@ -101,11 +101,34 @@ class ChromaPipeline:
             client_settings=self.chroma_settings
         )
 
-    # ✅ Add this retriever method
-    def get_retriever(self, k=3, score_threshold=0.2):
+    def get_retriever(self, k=3, score_threshold=0.2, search_type="mmr", fetch_k=20):
+        """
+        Returns an optimized retriever.
+        
+        Args:
+            k (int): Number of final results to retrieve.
+            score_threshold (float): Minimum similarity score for filtering.
+            search_type (str): Retrieval method ("mmr", "similarity", "similarity_score_threshold").
+            fetch_k (int): Candidates to fetch before reranking (used for MMR).
+        
+        Returns:
+            retriever: Configured retriever object.
+        """
         db = self.load_vector_store()
+        
+        # Supported search types:
+        # - "similarity": Standard top-k similarity search
+        # - "similarity_score_threshold": Filter by score
+        # - "mmr": Maximal Marginal Relevance (diverse results)
+        
         retriever = db.as_retriever(
-            search_type="similarity_score_threshold",
-            search_kwargs={"k": k, "score_threshold": score_threshold}
+            search_type=search_type,
+            search_kwargs={
+                "k": k,
+                "fetch_k": fetch_k if search_type == "mmr" else k,
+                "score_threshold": score_threshold
+            }
         )
+        
         return retriever
+
